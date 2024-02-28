@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+</head>
+<body>
+    <header>
+        <img src="/static/images/logoS4.png" alt="Logo S4 Suprimentos" class="logo">
+    </header>
+    <div class="login-box">
+        {% set messages = get_flashed_messages() %}
+        {% if messages %}
+            <div id="allert">
+                {{messages[0]}}
+            </div>
+        {% endif %}
+        <form action="login" method="post">
+            <section class="login">
+                <div class="username-box">
+                    <label for="username" id="username-label">Usuário: </label>
+                    <input type="text" name="username" id="username-input" placeholder="Seu Usuário" required>
+                </div>
+                <div class="password-box">
+                    <label for="password" id="password-label">Senha: </label>
+                    <input type="password" name="password" id="password-input" placeholder="Sua Senha" required>
+                </div>
+                <button type="submit" value="login" id="btn-login">Login</button>
+            </section>
+        </form>
+    </div>
+</body>
+</html>

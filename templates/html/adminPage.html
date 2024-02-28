@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Administrador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminPage.css')}}">
+</head>
+<body>
+    <header class="header">
+        <img src="/static/images/logoS4.png" alt="Logo S4 Suprimentos" id="logo">
+        <button type="submit" value="logout" id="btn-logout">Logout</button>
+    </header>
+    <h1>Seja bem vindo {{ username }}</h1>
+</body>
+</html>
