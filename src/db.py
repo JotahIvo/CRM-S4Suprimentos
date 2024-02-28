@@ -1,0 +1,1 @@
+db_url = 'mysql://admin:admin@host:3306/photo_app'
