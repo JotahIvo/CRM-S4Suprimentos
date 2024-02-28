@@ -11,7 +11,10 @@
 <body>
     <header class="header">
         <img src="/static/images/logoS4.png" alt="Logo S4 Suprimentos" id="logo">
-        <button type="submit" value="logout" id="btn-logout">Logout</button>
+        <form action="logout" method="post">
+            <button type="submit" value="logout" id="btn-logout">Logout</button>
+        </form>
+        
     </header>
     <h1>Seja bem vindo {{ username }}</h1>
 </body>
