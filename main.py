@@ -1,28 +1,74 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from src.login_autentication import login_autentication
-""" import os
-from flask_sqlalchemy import SQLAlchemy 
-from sqlalchemy.sql import func
-from src.db import db_url  """
+import os
+#from flask_sqlalchemy import SQLAlchemy 
+#from sqlalchemy.sql import func
+import src.database as database
+from src.db import db_url  
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "senha123"
-""" app.config['SQLALCHEMY_DATABASE_URI'] = db_url
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False """
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-# Database config
-db = SQLAlchemy(app)
+# Database routes:
+@app.route("/init_db", methods=['GET'])
+def create_database():
+    try:
+        database.init_db()
+        ret = {"status": "Database are created!"}
+    except Exception as e:
+        print(e)
+        ret = {"status": "Database are not created!"}
+    
+    return ret
 
-""" class Products(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text, nullable=False)
-    price = db.Column(db.Float, nullable=False)
 
-with app.app_context():
-    db.create_all() """ 
+@app.route("/create_tables", methods=['GET'])
+def create_tables():
+    try:
+        database.init_tables()
+        ret = {"status": "Tables created successfully!"}
+    except Exception as e:
+        print(e)
+        ret = {"status": "Problems to create tables!"}
+
+    return ret
+
+
+@app.route("/insert_products", methods=['POST'])
+def insert():
+    req_data = request.get_json()
+    products_json = {"name": req_data['name'], "description": req_data['description'], "price": req_data['price']}
+
+    ret = database.insert_product(products_json)
+    print(products_json)
+    
+    return ret
+
+
+@app.route("/update_products", methods=['PUT'])
+def update():
+    req_data = request.get_json()
+    products_json = {"id": req_data['id'], "name": req_data['name'], "description": req_data['description'], "price": req_data['price']}
+
+    ret = database.update_product(products_json)
+    print(products_json)
+
+    return ret
+
+
+@app.route("/delete_products", methods=['DELETE'])
+def delete():
+    req_data = request.get_json()
+    products_json = {"id": req_data['id']}
+
+    ret = database.delete_product(products_json)
+    print(products_json)
+
+    return ret
 
 
 # Page routes

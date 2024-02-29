@@ -15,5 +15,26 @@
             <button type="submit" value="logout" id="btn-logout">Logout</button>
         </form>
     </header>
+
+    <form action="insert" method="post">
+        <h1>Cadastrar produto</h1>
+        <section class="insert">
+            <div class="input-container">
+                <div class="label-box">
+                    <label for="name" id="name-label">Nome do produto: </label>
+                    <input type="text" name="name" id="name-input" placeholder="Digite o nome do produto" required>
+                </div>
+                <div class="label-box">
+                    <label for="description" id="description-label">Descrição: </label>
+                    <input type="text" name="description" id="description-input" placeholder="Digite a descrição" required>
+                </div>
+                <div class="label-box">
+                    <label for="price" id="price-label">Preço: </label>
+                    <input type="text" name="price" id="price-input" placeholder="Preço (R$)" required>
+                </div>
+            </div>
+            <button type="submit" value="insert" id="btn-insert">Cadastrar</button>
+        </section>
+    </form>
 </body>
 </html>
