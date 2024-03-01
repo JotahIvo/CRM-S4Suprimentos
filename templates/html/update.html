@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Registro - Administrador</title>
+    <title>Atualizar Registro - Administrador</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/createRecord.css')}}">
@@ -17,9 +17,13 @@
     </header>
 
     <form action="http://locahost:5000/products" method="post">
-        <h1>Cadastrar produto</h1>
+        <h1>Atualizar produto</h1>
         <section class="insert">
             <div class="input-container">
+                <!-- <div class="label-box">
+                    <label for="id" id="id-label">ID do produto: </label>
+                    <input type="text" name="id" id="id-input" placeholder="Digite o ID do produto" required>
+                </div> -->
                 <div class="label-box">
                     <label for="name" id="name-label">Nome do produto: </label>
                     <input type="text" name="name" id="name-input" placeholder="Digite o nome do produto" required>
@@ -33,7 +37,7 @@
                     <input type="text" name="price" id="price-input" placeholder="Preço (R$)" required>
                 </div>
             </div>
-            <button type="submit" value="insert" id="btn-insert">Cadastrar</button>
+            <button type="submit" value="insert" id="btn-insert">Atualizar</button>
             
         </section>
     </form>

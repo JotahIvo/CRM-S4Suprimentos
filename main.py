@@ -1,8 +1,5 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from src.login_autentication import login_autentication
-import os
-#from flask_sqlalchemy import SQLAlchemy 
-#from sqlalchemy.sql import func
 import src.database as database
 from src.db import db_url  
 
@@ -38,10 +35,16 @@ def create_tables():
     return ret
 
 
-@app.route("/insert_products", methods=['POST'])
+@app.route("/products", methods=['POST'])
 def insert():
-    req_data = request.get_json()
-    products_json = {"name": req_data['name'], "description": req_data['description'], "price": req_data['price']}
+    """ req_data = request.get_json()
+    products_json = {"name": req_data['name'], "description": req_data['description'], "price": req_data['price']} """
+
+    name = request.form['name']
+    description = request.form['description']
+    price = request.form['price']
+
+    products_json = {"name":name, "description:":description, "price":float(price)} 
 
     ret = database.insert_product(products_json)
     print(products_json)
@@ -49,7 +52,7 @@ def insert():
     return ret
 
 
-@app.route("/update_products", methods=['PUT'])
+@app.route("/products", methods=['PUT'])
 def update():
     req_data = request.get_json()
     products_json = {"id": req_data['id'], "name": req_data['name'], "description": req_data['description'], "price": req_data['price']}
@@ -60,7 +63,7 @@ def update():
     return ret
 
 
-@app.route("/delete_products", methods=['DELETE'])
+@app.route("/products", methods=['DELETE'])
 def delete():
     req_data = request.get_json()
     products_json = {"id": req_data['id']}
@@ -103,6 +106,11 @@ def logout():
 @app.route("/create-record", methods=['POST'])
 def create_record():
     return render_template("html/createRecord.html")
+
+
+@app.route("/update-record", methods=['POST'])
+def update_button():
+    return render_template("html/update.html")
 
 
 if __name__ == '__main__':

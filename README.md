@@ -10,13 +10,30 @@ O projeto foi desenvolvido utilizando o framework Flask com banco de dados MySQL
 ## Requisitos:
 Para poder rodar o programa em seu computador devemos ter algumas bibliotecas Python instaladas. Para instalar as bibliotecas necessárias, deve rodar o comando:
 ```bash
-$ git clone ...
+$ git clone https://github.com/JotahIvo/CRM-S4Suprimentos.git
 $ cd ProjetoS4Suprimentos
 $ pip install -r requirements.txt
 ```
 Para o banco de dados, devemos instalar o docker, no meu caso instalei para WSL seguindo a [Documentação do Docker][link-docker]
 
 Além do Docker, também instalei o [DBeaver][link-dbeaver] para poder visualizar o banco de dados.
+
+### Rodando o projeto na sua máquina:
+Após ter clonado o repositório, instalado as bibliotecas do `requirements.txt` e o Docker, você deve iniciar um banco de dados MySQL com o Docker com os seguintes comandos:
+
+```bash
+$ docker pull mysql/mysql-server:latest
+$ docker run -d -p 3306:3306 --name mysql-docker-container -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=photo_app -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin mysql/mysql-server:latest
+```
+Dessa forma o container já está funcionando e rodando um banco de dados MySQL.
+
+Em seguida, basta rodar o comando:
+
+```bash
+$ python main.py
+```
+
+Dessa forma, o projeto irá rodar e se encontrar disponível no seu localhost:5000, para acessar, basta digitar no seu navegador: http://127.0.0.1:5000 e você terá acesso ao projeto.
 
 ## Etapas de desenvolvimento:
 
