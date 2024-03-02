@@ -2,7 +2,7 @@ import sqlalchemy
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy import select, update, insert, delete
-from src.products_class import Products, Base
+from src.models import Products, Base
 from sqlalchemy_utils import database_exists, create_database
 from src.db import db_url
 
@@ -32,7 +32,7 @@ def init_tables():
         print("Table already exists!")
         ret = {"status": "Table already exists!"}
     else:
-        import src.products_class
+        import src.models
         Base.metadata.create_all(bind=engine)
         print("Table created successfully!")
         ret = {"status": "Table created successfully!"}
