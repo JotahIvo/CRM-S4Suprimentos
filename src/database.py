@@ -125,3 +125,13 @@ def delete_product(json_product):
         ret = {"status": str(e)}
 
     return ret
+
+
+def select_all_products():
+    Session = sessionmaker(engine)
+    session = Session()
+
+    query = select(Products.id, Products.name, Products.description, Products.price)
+    ret = session.execute(query)
+
+    return ret

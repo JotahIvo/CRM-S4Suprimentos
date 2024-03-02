@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, flash, redirect, url_for
 from src.login_autentication import login_autentication
 import src.database as database
 from src.db import db_url  
+from src.products_json import products_json
 
 
 app = Flask(__name__)
@@ -37,41 +38,51 @@ def create_tables():
 
 @app.route("/products", methods=['POST'])
 def insert():
-    """ req_data = request.get_json()
-    products_json = {"name": req_data['name'], "description": req_data['description'], "price": req_data['price']} """
-
     name = request.form['name']
     description = request.form['description']
     price = request.form['price']
 
-    products_json = {"name":name, "description:":description, "price":float(price)} 
+    products_insert = {"name":name, "description":description, "price":float(price)} 
 
-    ret = database.insert_product(products_json)
-    print(products_json)
+    database.insert_product(products_insert)
+    print(products_insert)
     
-    return ret
+    products = products_json()
+    
+    return render_template("html/adminPage.html", products=products)
 
 
-@app.route("/products", methods=['PUT'])
+@app.route("/products/update", methods=['POST'])
 def update():
-    req_data = request.get_json()
-    products_json = {"id": req_data['id'], "name": req_data['name'], "description": req_data['description'], "price": req_data['price']}
+    
+    id = request.form['id']
+    name = request.form['name']
+    description = request.form['description']
+    price = request.form['price']
 
-    ret = database.update_product(products_json)
-    print(products_json)
+    products_update = {"id": id, "name": name, "description": description, "price": price}
 
-    return ret
+    database.update_product(products_update)
+    print(products_update)
+
+    products = products_json()
+    
+    return render_template("html/adminPage.html", products=products)
 
 
-@app.route("/products", methods=['DELETE'])
+@app.route("/products/delete", methods=['POST'])
 def delete():
-    req_data = request.get_json()
-    products_json = {"id": req_data['id']}
+    print("entrou")
+    id = request.form['id']
 
-    ret = database.delete_product(products_json)
-    print(products_json)
+    products_delete = {"id": id}
 
-    return ret
+    database.delete_product(products_delete)
+    print(products_delete)
+
+    products = products_json()
+    
+    return render_template("html/adminPage.html", products=products)
 
 
 # Page routes
@@ -82,20 +93,23 @@ def home_page():
 
 @app.route("/login", methods=['POST']) #login
 def login():
-    user_input = request.form.get('username')
-    password_input = request.form.get('password')
-    
-    autentication = login_autentication(user_input, password_input)
-    if autentication == "/":
-        flash('Usuário ou senha inválido(s)')
-        return redirect("/")
-    else:
-        if autentication == "admin":
-            return render_template("html/adminPage.html", username='Administrador')
-        else:
-            return render_template("html/userPage.html", username='Usuário')
+    products = products_json()
 
-    return redirect("/")
+    if request.method == "POST":
+        user_input = request.form.get('username')
+        password_input = request.form.get('password')
+        
+        autentication = login_autentication(user_input, password_input)
+        if autentication == "/":
+            flash('Usuário ou senha inválido(s)')
+            return redirect("/")
+        else:
+            if autentication == "admin":
+                return render_template("html/adminPage.html", products=products)
+            else:
+                return render_template("html/userPage.html", products=products)
+
+        return redirect("/")
 
 
 @app.route("/logout", methods=['POST']) #logout
@@ -110,7 +124,7 @@ def create_record():
 
 @app.route("/update-record", methods=['POST'])
 def update_button():
-    return render_template("html/update.html")
+    return render_template("html/update.html")                                                                                                                                                                                                                                              
 
 
 if __name__ == '__main__':

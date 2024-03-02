@@ -20,10 +20,17 @@
 
     <div id="container">
         <h1>Seja bem vindo Administrador</h1>
-        <form action="create-record" method="post">
-            <button type="submit" value="create-record" id="btn-create-record">Novo Registro +</button>
-        </form>
+        <div class="button-container">
+            <form action="create-record" method="post">
+                <button type="submit" value="create-record" id="btn-create-record">Novo Registro +</button>
+            </form>
+            <form action="update-record" method="post">
+                <button type="submit" value="update-record" id="btn-create-record">Atualizar Registro</button>
+            </form>
+        </div>
+        
         <div class="records-container">
+
             <table id="records">
                 <thead>
                     <tr>
@@ -32,41 +39,23 @@
                         <th class="head-item">Descrição</th>
                         <th class="head-item">Preço</th>
                         <th class="head-item"></th>
-                        <th class="head-item"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="body-item">1</td>
-                        <td class="body-item">Produto A</td>
-                        <td class="body-item">Descrição do Produto A</td>
-                        <td class="body-item">R$ 19.99</td>
-
-                        <td class="body-item td-button">
-                            <button class="crud-button"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                        <td class="body-item td-button">
-                            <form action="http://localhost:5000/update-record" method="post">
-                                <button class="crud-button"><i class="fa-solid fa-pen"></i></button>
+                    {% for product in products %}
+                        <tr>
+                            <form action="/products/delete" method="post" enctype="application/x-www-form-urlencoded">
+                                <td class="body-item">{{ product.id }}</td>
+                                <td class="body-item">{{ product.name }}</td>
+                                <td class="body-item">{{ product.description }}</td>
+                                <td class="body-item">{{ product.price }}</td>
+                                <input type="hidden" name="id" value="{{ product.id }}">
+                                <td class="body-item td-button">
+                                    <button type="submit" class="crud-button"><i class="fa-solid fa-trash"></i></button>
+                                </td>
                             </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="body-item">2</td>
-                        <td class="body-item">Produto B</td>
-                        <td class="body-item">Descrição do Produto B</td>
-                        <td class="body-item">R$ 29.99</td>
-
-                        <td class="body-item td-button">
-                            <button class="crud-button"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                        <td class="body-item td-button">
-                            <form action="http://localhost:5000/update-record" method="post">
-                                <button class="crud-button"><i class="fa-solid fa-pen"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                    <!-- Adicione mais linhas conforme necessário -->
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

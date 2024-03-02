@@ -16,7 +16,7 @@
         </form>
     </header>
 
-    <form action="http://locahost:5000/products" method="post">
+    <form action="/products/update" method="post">
         <h1>Atualizar produto</h1>
         <section class="insert">
             <div class="input-container">
@@ -24,6 +24,10 @@
                     <label for="id" id="id-label">ID do produto: </label>
                     <input type="text" name="id" id="id-input" placeholder="Digite o ID do produto" required>
                 </div> -->
+                <div class="label-box">
+                    <label for="id" id="id-label">ID do produto: </label>
+                    <input type="text" name="id" id="id-input" placeholder="Digite o ID do produto" required>
+                </div>
                 <div class="label-box">
                     <label for="name" id="name-label">Nome do produto: </label>
                     <input type="text" name="name" id="name-input" placeholder="Digite o nome do produto" required>
