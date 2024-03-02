@@ -49,7 +49,14 @@ Como só temos dois tipos de usuários, foi criado um arquivo `users.json` para 
 Para autenticar, foi criado um arquivo `login_autentication.py` que é chamado na `main.py` e é responssável por autenticar e validar o login do usuário.
 
 ### 3° Etapa: Criação do Banco MySQL em um Docker Container
-Para a criação do banco, foi escolhido o Docker...
+Para a criação do banco, foi escolhido o Docker, pois ele oferece algumas vantagens:
+> Isolamento e portabilidade;
+
+> Facilidade de configuração e reprodução do ambiente;
+
+> Gerenciamento eficiente de recursos;
+
+> Facilidade na integração com outras tecnologias.
 
 Após a instalação do Docker, foi criado o banco com o nome `photo_app`, que é o nome padrão do banco.
 

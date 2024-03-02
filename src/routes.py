@@ -32,7 +32,7 @@ def create_tables():
     return ret
 
 
-@urls_blueprint.route("/products", methods=['POST'])
+@urls_blueprint.route("/products/insert", methods=['POST'])
 def insert():
     name = request.form['name']
     description = request.form['description']
