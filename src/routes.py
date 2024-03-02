@@ -108,16 +108,16 @@ def login():
         return redirect("/")
 
 
-@urls_blueprint.route("/logout", methods=['POST']) 
+@urls_blueprint.route("/products/logout", methods=['POST']) 
 def logout():
     return redirect("/")
 
 
-@urls_blueprint.route("/create-record", methods=['POST'])
+@urls_blueprint.route("/products/create-record", methods=['POST'])
 def create_record():
     return render_template("html/createRecord.html")
 
 
-@urls_blueprint.route("/update-record", methods=['POST'])
+@urls_blueprint.route("/products/update-record", methods=['POST'])
 def update_button():
     return render_template("html/update.html")

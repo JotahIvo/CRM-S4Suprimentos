@@ -12,7 +12,7 @@
 <body>
     <header class="header">
         <img src="/static/images/logoS4.png" alt="Logo S4 Suprimentos" id="logo">
-        <form action="logout" method="post">
+        <form action="products/logout" method="post">
             <button type="submit" value="logout" id="btn-logout">Logout</button>
         </form>
         
@@ -21,11 +21,11 @@
     <div id="container">
         <h1>Seja bem vindo Administrador</h1>
         <div class="button-container">
-            <form action="create-record" method="post">
+            <form action="products/create-record" method="post">
                 <button type="submit" value="create-record" id="btn-create-record">Novo Produto +</button>
             </form>
             <form action="update-record" method="post">
-                <button type="submit" value="update-record" id="btn-create-record">Atualizar Produto</button>
+                <button type="submit" value="update-record" id="btn-update-record">Atualizar Produto</button>
             </form>
         </div>
         

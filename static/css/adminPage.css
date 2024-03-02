@@ -64,7 +64,7 @@ th, td {
 }
 
 
-#btn-create-record {
+#btn-create-record, #btn-update-record {
     margin: 2em 1em;
     background-color: transparent;
     border: 1px solid var(--main-color);
@@ -79,7 +79,7 @@ th, td {
 }
 
 
-#btn-create-record:hover {
+#btn-create-record:hover, #btn-update-record:hover {
     background-color: var(--main-color);
     color: var(--secondary-color);
 }
