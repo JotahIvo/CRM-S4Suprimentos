@@ -80,15 +80,12 @@ No nosso arquivo de rotas `routes.py`, foi criado as rotas que iram chamar as fu
 
 > Select: O select é feito para todos os itens da tabela e exibido no front, tanto para a página de administrador, quanto para a página de usuário.
 
-### 6° Etapa: API...
-...
 
-### 7° Etapa: Refatoração e Documentação
+### 6° Etapa: Refatoração e Documentação
 
 Esta é a última etapa do projeto, após tudo estar funcionando da maneira esperada, o código é reescrito de forma mais organizada e com mais fácil compreensão, para que seja mais fácil a leitura e a atualização do software.
 
 A documentação acontece ao final da refatoração, que consiste em um arquivo `README.md` que contém tudo sobre a utilização do software, tanto para desenvolvedores quanto para usuários comuns. Nela é abordado, instalação e como rodar o software em sua máquina, etapas de desenvolvimento e por fim um guia de como usar e navegar pelo software.
-
 
 ## Guia de navegação:
 
@@ -120,7 +117,7 @@ Imagem 4: Página de cadastro de produtos
 
 Na página de "Atualizar Produto" temos um formulário que é possível atualizar um produto já cadastrado.
 
-![new-product](./static/images/update-page.jpeg)
+![update-product](./static/images/update-page.jpeg)
 Imagem 5: Página de atualizar produtos
 
 Criado por João Pedro de Almeida Ivo.

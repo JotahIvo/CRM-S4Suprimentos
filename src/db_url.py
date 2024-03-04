@@ -1,0 +1,1 @@
+DB_URL = 'mysql+pymysql://admin:admin@localhost:3306/photo_app'

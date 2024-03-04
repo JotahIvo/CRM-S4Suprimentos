@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/createRecord.css')}}">
+    <link rel="shortcut icon" href="../../static/images/logoS4.png">
 </head>
 <body>
     <header class="header">
         <img src="/static/images/logoS4.png" alt="Logo S4 Suprimentos" id="logo">
-        <form action="logout" method="post">
-            <button type="submit" value="logout" id="btn-logout">Logout</button>
+        <form action="/back" method="post">
+            <button type="submit" value="logout" id="btn-logout">Voltar</button>
         </form>
     </header>
 
@@ -20,10 +21,6 @@
         <h1>Atualizar produto</h1>
         <section class="insert">
             <div class="input-container">
-                <!-- <div class="label-box">
-                    <label for="id" id="id-label">ID do produto: </label>
-                    <input type="text" name="id" id="id-input" placeholder="Digite o ID do produto" required>
-                </div> -->
                 <div class="label-box">
                     <label for="id" id="id-label">ID do produto: </label>
                     <input type="text" name="id" id="id-input" placeholder="Digite o ID do produto" required>

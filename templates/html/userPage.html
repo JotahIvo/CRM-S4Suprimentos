@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/userPage.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css')}}">
+    <link rel="shortcut icon" href="../../static/images/logoS4.png">
 </head>
 <body>
     <header class="header">
         <img src="/static/images/logoS4.png" alt="Logo S4 Suprimentos" id="logo">
-        <form action="products/logout" method="post">
+        <form action="logout" method="post">
             <button type="submit" value="logout" id="btn-logout">Logout</button>
         </form>
     </header>
