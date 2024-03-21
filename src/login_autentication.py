@@ -12,3 +12,4 @@ def login_autentication(user_input, password_input):
                 return user_input
             else:
                 return "/"
+            
